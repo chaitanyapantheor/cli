@@ -68,6 +68,11 @@ func TestParseAnnotations(t *testing.T) {
 			args:   args{kvs: []string{"invalid-no-equals"}},
 			want:   want{err: cmpopts.AnyError},
 		},
+		"EmptyKey": {
+			reason: "An entry with an empty key should return an error.",
+			args:   args{kvs: []string{"=value"}},
+			want:   want{err: cmpopts.AnyError},
+		},
 	}
 
 	for name, tc := range cases {
